@@ -1,0 +1,46 @@
+.header {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	margin-top: 0.5rem;
+	margin-right: 1rem;
+	margin-bottom: 0;
+
+	i {
+		padding: 1rem;
+		border-radius: 0.5rem;
+		transition: all 250ms ease;
+		border: 1px solid transparent;
+	}
+
+	i:hover {
+		@include set-hover($dark-primary-color, $dark-primary-color);
+	}
+
+	.user {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 0.5rem;
+		padding: 0.5rem 1rem;
+		transition: all 250ms ease;
+		border: 1px solid transparent;
+
+		img {
+			margin-left: 1rem;
+			width: 2rem;
+			height: 2rem;
+		}
+
+		&:after {
+			content: '˯';
+			font-size: 2rem;
+			margin-top: -2rem;
+			margin-left: 0.5rem;
+		}
+
+		&:hover {
+			@include set-hover($dark-primary-color, $dark-primary-color);
+		}
+	}
+}

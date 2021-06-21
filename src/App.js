@@ -6,9 +6,7 @@ import avatar from './resources/images/profile-picture.jpg';
 import './scss/App.scss';
 
 function App() {
-	const [userData, setUserData] = useState({ username: null });
-
-	setUserData((userData) => [...userData, { username: 'John Doe' }]);
+	const [userData, setUserData] = useState({ username: 'John Boyer' });
 
 	return (
 		<div className='root'>

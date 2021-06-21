@@ -1,0 +1,36 @@
+.applicant {
+	justify-content: space-between;
+	text-align: left;
+	padding: 1rem;
+
+	.btn {
+		padding: 0.5rem;
+		border-radius: 10rem;
+		margin-left: 1rem;
+
+		i {
+			margin: 0;
+		}
+	}
+}
+
+.applicant,
+.applicant > * {
+	display: flex;
+	align-items: center;
+
+	.applicant-left {
+		display: flex;
+
+		i {
+			font-size: 2rem;
+			margin-right: 1rem;
+		}
+		h4 {
+			font-weight: 600;
+		}
+		span {
+			font-size: 0.7rem;
+		}
+	}
+}
