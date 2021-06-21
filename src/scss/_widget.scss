@@ -31,7 +31,8 @@
 
 	&.bg-primary {
 		.hover-extra {
-			&:hover {
+			&:hover,
+			&.active {
 				@include set-hover($primary-color, $primary-color);
 			}
 		}
@@ -44,7 +45,8 @@
 		border-radius: 0.5rem;
 		transition: all 250ms ease;
 
-		&:hover {
+		&:hover,
+		&.active {
 			@include set-hover($dark-primary-color, $dark-primary-color);
 		}
 	}
