@@ -1,0 +1,339 @@
+$spaceamounts: (1, 2, 3, 4, 5);
+
+@each $space in $spaceamounts {
+	.m-#{$space} {
+		margin: #{$space}rem;
+	}
+	.my-#{$space} {
+		margin: #{$space}rem 0;
+	}
+	.p-#{$space} {
+		padding: #{$space}rem;
+	}
+	.py-#{$space} {
+		padding: #{$space}rem 0;
+	}
+}
+
+a {
+	text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: unset;
+}
+
+input {
+	padding: 0.8rem 0.6rem;
+	margin-left: 0.5rem;
+	width: 14rem;
+	border: 1px solid transparent;
+	border-radius: 0.5rem;
+	outline: none;
+	@include set-background(transparent);
+	transition: all 250ms ease;
+}
+
+input:focus,
+input:hover {
+	@include set-hover($dark-primary-color, $dark-primary-color);
+}
+
+::placeholder {
+	color: #fff6;
+}
+
+.root {
+	display: flex;
+	width: 100%;
+	height: 100%;
+}
+
+.avatar {
+	width: 3rem;
+	height: 3rem;
+	border-radius: 10rem;
+}
+
+.main {
+	width: 90%;
+	margin-left: 7rem;
+}
+
+.text {
+	&-primary {
+		color: $primary-color;
+	}
+	&-secondary {
+		color: $secondary-color;
+	}
+	&-tertiary {
+		color: $tertiary-color;
+	}
+}
+
+.bg {
+	&-primary {
+		@include set-background($primary-color);
+	}
+	&-secondary {
+		@include set-background($dark-secondary-color);
+	}
+	&-tertiary {
+		@include set-background($tertiary-color);
+	}
+
+	&-dark {
+		&-primary {
+			@include set-background($dark-primary-color);
+		}
+		&-secondary {
+			@include set-background($dark-secondary-color);
+		}
+		&-tertiary {
+			@include set-background($dark-tertiary-color);
+		}
+	}
+}
+
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #fff;
+	padding: 0.4rem 1.3rem;
+	color: #333;
+	border: none;
+	border-radius: 0.5rem;
+	outline: none;
+	transition: all 250ms ease-in;
+
+	i {
+		margin-right: 0.5rem;
+	}
+
+	&.btn-primary {
+		@include set-background($primary-color);
+		&:hover {
+			background: lighten($primary-color, 5%);
+		}
+		&:active {
+			background: darken($primary-color, 5%);
+		}
+	}
+
+	&.btn-secondary {
+		@include set-background($secondary-color);
+		&:hover {
+			background: lighten($secondary-color, 5%);
+		}
+		&:active {
+			background: darken($secondary-color, 5%);
+		}
+	}
+
+	&.btn-tertiary {
+		@include set-background($tertiary-color);
+		&:hover {
+			background: lighten($tertiary-color, 5%);
+		}
+		&:active {
+			background: darken($tertiary-color, 5%);
+		}
+	}
+
+	&.btn-dark {
+		&-primary {
+			@include set-background($dark-primary-color);
+			&:hover {
+				background: lighten($dark-primary-color, 5%);
+			}
+			&:active {
+				background: darken($dark-primary-color, 5%);
+			}
+		}
+		&-secondary {
+			@include set-background($dark-secondary-color);
+			&:hover {
+				background: lighten($dark-secondary-color, 5%);
+			}
+			&:active {
+				background: darken($dark-secondary-color, 5%);
+			}
+		}
+		&-tertiary {
+			@include set-background($dark-tertiary-color);
+			&:hover {
+				background: lighten($dark-tertiary-color, 5%);
+			}
+			&:active {
+				background: darken($dark-tertiary-color, 5%);
+			}
+		}
+	}
+
+	&:hover {
+		background: lighten($dark-primary-color, 20%);
+		color: #fff;
+		transform: scale(1.1);
+		box-shadow: set-shadows($dark-primary-color);
+		cursor: pointer;
+	}
+
+	&:active {
+		transform: scale(1);
+		background: lighten($dark-primary-color, 10%);
+		box-shadow: unset;
+	}
+}
+
+.pie-wrapper {
+	@include size($default-size, $default-size);
+	float: left;
+	margin: 15px;
+	position: relative;
+	font-size: 5em;
+
+	&:nth-child(3n + 1) {
+		clear: both;
+	}
+
+	.pie {
+		@include size(100%, 100%);
+		clip: rect(0, $default-size, $default-size, $default-size / 2);
+		left: 0;
+		position: absolute;
+		top: 0;
+
+		.half-circle {
+			@include size(100%, 100%);
+			border: ($default-size / 10) solid #3498db;
+			border-radius: 50%;
+			clip: rect(0, $default-size / 2, $default-size, 0);
+			left: 0;
+			position: absolute;
+			top: 0;
+		}
+	}
+
+	.label {
+		background: $dark-tertiary-color;
+		border-radius: 50%;
+		bottom: $label-font-size-redo / 10;
+		color: #ecf0f1;
+		cursor: default;
+		display: block;
+		font-size: $label-font-size;
+		left: $label-font-size-redo / 10;
+		line-height: $label-font-size-redo * 0.7;
+		position: absolute;
+		right: $label-font-size-redo / 10;
+		text-align: center;
+		top: $label-font-size-redo / 10;
+
+		.smaller {
+			color: #bdc3c7;
+			font-size: 0.45em;
+			padding-bottom: 20px;
+			vertical-align: super;
+		}
+	}
+
+	.shadow {
+		@include size(100%, 100%);
+		border: $default-size / 10 solid #bdc3c7;
+		border-radius: 50%;
+	}
+
+	&.style-2 {
+		.label {
+			background: none;
+			color: #7f8c8d;
+
+			.smaller {
+				color: #bdc3c7;
+			}
+		}
+	}
+
+	&.progress-75 {
+		@include draw-progress(75, $secondary-color);
+	}
+}
+
+.percentage {
+	font-size: 0.8em;
+	line-height: 1;
+	text-transform: uppercase;
+	width: 100%;
+	height: 40px;
+	margin-left: 130px;
+
+	&:after {
+		content: '';
+		display: block;
+		background-color: $primary-color;
+		width: 50px;
+		border-radius: 1rem;
+		margin-bottom: 10px;
+		height: 90%;
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+		transition: background-color 0.3s ease;
+		cursor: pointer;
+	}
+	&:hover,
+	&:focus {
+		&:after {
+			background-color: lighten($color: $primary-color, $amount: 20);
+		}
+	}
+}
+
+@for $i from 1 through 100 {
+	.percentage-#{$i}:after {
+		$value: ($i * 1%);
+		width: $value;
+	}
+}
+
+dl {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	max-width: 700px;
+	position: relative;
+	padding: 20px;
+}
+
+dt {
+	align-self: flex-start;
+	width: 100%;
+	font-weight: 700;
+	display: block;
+	text-align: center;
+	font-size: 1.2em;
+	font-weight: 700;
+	margin-bottom: 20px;
+	margin-left: 130px;
+}
+
+dd {
+	.text {
+		font-weight: 600;
+		display: flex;
+		align-items: center;
+		height: 40px;
+		width: 130px;
+		position: absolute;
+		left: 0;
+		justify-content: flex-end;
+		font-size: 1rem;
+	}
+}

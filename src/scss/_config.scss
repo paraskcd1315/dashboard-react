@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@400;500;600;700;800&display=swap');
+
+$primary-color: #2e9cfd;
+$secondary-color: #6643b3;
+$tertiary-color: #fe5260;
+$dark-primary-color: #1f2025;
+$dark-secondary-color: #222328;
+$dark-tertiary-color: #3f4150;
+$default-size: 1em;
+$label-font-size: $default-size / 4;
+$label-font-size-redo: $default-size * 4;
+
+@function set-text-color($color) {
+	@if (lightness($color) > 60) {
+		@return #333;
+	} @else {
+		@return #fff;
+	}
+}
+
+@function set-color-opacity($color, $opacity) {
+	@return rgba($color, $opacity);
+}
+
+@function set-shadows($color) {
+	@return 0px 1px 5px darken($color: set-color-opacity($color, 0.5), $amount: 4),
+		0px 10px 20px darken($color: set-color-opacity($color, 0.2), $amount: 4);
+}
+
+@mixin set-background($color) {
+	background-color: $color;
+	color: set-text-color($color);
+}
+
+@mixin set-hover($bg-color, $shadow-color) {
+	border-color: set-color-opacity(#fff, 0.1);
+	cursor: pointer;
+	@include set-background(lighten($color: $bg-color, $amount: 5));
+	box-shadow: set-shadows($shadow-color);
+}
+
+@mixin size($width, $height) {
+	height: $height;
+	width: $width;
+}
+
+@mixin draw-progress($progress, $color) {
+	.pie {
+		.half-circle {
+			border-color: $color;
+		}
+
+		.left-side {
+			transform: rotate($progress * 3.6deg);
+		}
+
+		@if $progress <= 50 {
+			.right-side {
+				display: none;
+			}
+		} @else {
+			clip: rect(auto, auto, auto, auto);
+
+			.right-side {
+				transform: rotate(180deg);
+			}
+		}
+	}
+}

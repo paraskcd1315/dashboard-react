@@ -1,0 +1,366 @@
+@import 'config';
+@import 'utilities';
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+		Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-size: 1rem;
+	line-height: 1.6;
+	@include set-background($dark-primary-color);
+}
+
+.navbar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	width: 5rem;
+	height: 100vh;
+	align-items: center;
+
+	&-vertical {
+		flex-direction: column;
+		border-right: 1px solid set-color-opacity(#fff, 0.1);
+		box-shadow: inset 1px 0 5px
+				darken($color: set-color-opacity($dark-primary-color, 0.5), $amount: 4),
+			inset -10px 0 20px -2px
+				darken($color: set-color-opacity($dark-primary-color, 0.5), $amount: 4);
+	}
+
+	.items {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		width: 100%;
+		height: 100%;
+	}
+
+	.items > * {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		font-size: 1rem;
+
+		.fa,
+		.far,
+		.fad,
+		.fal,
+		.fas {
+			width: 100%;
+			text-align: center;
+			border-right: 3px solid transparent;
+		}
+
+		i {
+			transition: all 250ms ease-out;
+
+			&.active,
+			&:hover {
+				color: $primary-color;
+				border-right: 3px solid $primary-color;
+			}
+
+			&:hover {
+				cursor: pointer;
+				@include set-background(
+					lighten($color: $dark-primary-color, $amount: 5)
+				);
+			}
+		}
+	}
+}
+
+.header {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	margin-top: 0.5rem;
+	margin-right: 1rem;
+	margin-bottom: 0;
+
+	i {
+		padding: 1rem;
+		border-radius: 0.5rem;
+		transition: all 250ms ease;
+		border: 1px solid transparent;
+	}
+
+	i:hover {
+		@include set-hover($dark-primary-color, $dark-primary-color);
+	}
+
+	.user {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 0.5rem;
+		padding: 0.5rem 1rem;
+		transition: all 250ms ease;
+		border: 1px solid transparent;
+
+		img {
+			margin-left: 1rem;
+			width: 2rem;
+			height: 2rem;
+		}
+
+		&:after {
+			content: '˯';
+			font-size: 2rem;
+			margin-top: -2rem;
+			margin-left: 0.5rem;
+		}
+
+		&:hover {
+			@include set-hover($dark-primary-color, $dark-primary-color);
+		}
+	}
+}
+
+.container,
+.material {
+	display: flex;
+	flex-direction: column;
+	margin-top: 0.5rem;
+}
+
+.material {
+	&-title,
+	.searchbar {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		.btn {
+			margin-right: 1rem;
+		}
+	}
+
+	&-content {
+		margin-top: 2rem;
+		display: grid;
+	}
+
+	&-content-has-sidebar {
+		grid-template-columns: 3fr 1fr;
+		grid-column-gap: 1rem;
+	}
+}
+
+.material-content-left {
+	display: flex;
+	flex-direction: column;
+
+	.row {
+		margin-bottom: 1rem;
+		display: grid;
+		grid-gap: 1rem;
+
+		&.col-1 {
+			grid-template-columns: 3fr;
+		}
+
+		&.col-2 {
+			grid-template-columns: 2fr 1fr;
+
+			.data {
+				width: 100%;
+
+				.percentage {
+					&.color {
+						&-primary:after {
+							background-color: $primary-color;
+						}
+						&-secondary:after {
+							background-color: $secondary-color;
+						}
+						&-tertiary:after {
+							background-color: $tertiary-color;
+						}
+					}
+					&:after {
+						height: 50%;
+					}
+
+					&:hover,
+					&:focus {
+						&.color {
+							&-primary:after {
+								background-color: lighten($color: $primary-color, $amount: 20);
+							}
+							&-secondary:after {
+								background-color: lighten(
+									$color: $secondary-color,
+									$amount: 20
+								);
+							}
+							&-tertiary:after {
+								background-color: lighten($color: $tertiary-color, $amount: 20);
+							}
+						}
+					}
+				}
+			}
+		}
+
+		&.col-3 {
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+	}
+}
+
+.widget {
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	border: 1px solid;
+	border-radius: 1rem;
+	border-color: set-color-opacity(#fff, 0.1);
+	transition: 250ms ease;
+
+	&-header,
+	&-content,
+	.buttons,
+	.info {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.info {
+		font-size: 1.5rem;
+		i {
+			font-size: 2rem;
+			margin-right: 1rem;
+		}
+	}
+
+	.info span {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&.bg-primary {
+		.hover-extra {
+			&:hover {
+				@include set-hover($primary-color, $primary-color);
+			}
+		}
+	}
+
+	.hover-extra {
+		margin-left: 1rem;
+		padding: 1rem;
+		border: 1px solid transparent;
+		border-radius: 0.5rem;
+		transition: all 250ms ease;
+
+		&:hover {
+			@include set-hover($dark-primary-color, $dark-primary-color);
+		}
+	}
+
+	i {
+		margin-left: 0.2rem !important;
+	}
+
+	&-content {
+		.data {
+			font-size: 2rem;
+
+			.percent-change {
+				font-size: 1rem;
+			}
+		}
+	}
+}
+
+.material-content-right {
+	display: flex;
+	flex-flow: column;
+	height: 100%;
+	text-align: center;
+	border-radius: 1rem;
+	border: 1px solid set-color-opacity(#fff, 0.1);
+
+	.title {
+		flex: 0 1 auto;
+	}
+
+	.graphic {
+		flex: 0 1 auto;
+
+		img {
+			height: 15rem;
+		}
+	}
+
+	.application-lists {
+		flex: 1 1 auto;
+		margin-top: -4rem;
+		border-radius: 1rem;
+		border-top-left-radius: 3rem;
+		border-top-right-radius: 3rem;
+		@include set-background($dark-secondary-color);
+
+		.title {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			text-align: left;
+			border: 1px solid transparent;
+			border-radius: 0.5rem;
+			transition: all 250ms ease;
+
+			&:hover {
+				@include set-hover($dark-primary-color, $dark-primary-color);
+			}
+		}
+
+		.applicant {
+			justify-content: space-between;
+			text-align: left;
+			padding: 1rem;
+
+			.btn {
+				padding: 0.5rem;
+				border-radius: 10rem;
+				margin-left: 1rem;
+
+				i {
+					margin: 0;
+				}
+			}
+		}
+
+		.applicant,
+		.applicant > * {
+			display: flex;
+			align-items: center;
+
+			.applicant-left {
+				display: flex;
+
+				i {
+					font-size: 2rem;
+					margin-right: 1rem;
+				}
+				h4 {
+					font-weight: 600;
+				}
+				span {
+					font-size: 0.7rem;
+				}
+			}
+		}
+	}
+}
