@@ -1,0 +1,87 @@
+@media only screen and (max-width: 1024px) {
+	.root {
+		overflow: hidden;
+	}
+
+	.navbar {
+		width: 3rem;
+
+		.avatar {
+			width: 2rem;
+			height: 2rem;
+		}
+	}
+
+	.main {
+		overflow: scroll;
+		width: 80%;
+		margin-left: 4rem;
+	}
+
+	.material {
+		.material-title {
+			flex-direction: column;
+			align-items: unset;
+
+			&-right {
+				margin-top: 1rem;
+
+				.searchbar {
+					margin-top: 1rem;
+
+					input {
+						margin-right: 1rem;
+					}
+				}
+			}
+		}
+
+		.material-content-has-sidebar {
+			grid-template-columns: 1fr;
+		}
+
+		.col-1,
+		.col-2,
+		.col-3 {
+			grid-template-columns: 1fr !important;
+
+			.widget {
+				width: 95%;
+				height: auto;
+
+				&-header,
+				&-content,
+				.buttons {
+					flex-direction: column;
+				}
+
+				.buttons {
+					margin-top: 1rem;
+				}
+			}
+		}
+	}
+
+	.material-content-right {
+		width: 95%;
+	}
+
+	.changeable {
+		width: 20%;
+		margin-left: -5rem;
+		margin-top: 1rem;
+	}
+
+	.material-content-right .graphic img {
+		height: 10rem !important;
+	}
+
+	.applicant .applicant-left i,
+	.applicant > * .applicant-left i {
+		font-size: 1.5rem;
+	}
+
+	.application-lists {
+		padding: 1rem;
+	}
+}

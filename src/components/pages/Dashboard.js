@@ -1,7 +1,8 @@
 import React from 'react';
 import Sidebar from '../layout/Sidebar';
 import Widget from '../models/Widget';
-import { Line } from 'react-chartjs-2';
+import LineChart from '../charts/LineChart';
+import CircularProgress from '../charts/CircularProgress';
 
 const Dashboard = ({ username }) => {
 	const date = new Date();
@@ -28,33 +29,6 @@ const Dashboard = ({ username }) => {
 		'November',
 		'December'
 	];
-
-	const data = {
-		labels: ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July'],
-		datasets: [
-			{
-				label: 'Applications Recieved',
-				data: [12, 10, 3, 5, 10, 3, 12],
-				fill: true,
-				backgroundColor: 'rgb(255, 99, 132)',
-				borderColor: 'rgba(255, 99, 132, 0.2)'
-			}
-		]
-	};
-
-	const options = {
-		scales: {
-			yAxes: [
-				{
-					ticks: {
-						beginAtZero: true
-					}
-				}
-			]
-		}
-	};
-
-	const LineChart = () => <Line data={data} options={options} height={90} />;
 
 	return (
 		<div className='material'>
@@ -99,15 +73,8 @@ const Dashboard = ({ username }) => {
 												3.59%
 											</div>
 										</div>
-										<div class='pie-wrapper progress-75 style-2'>
-											<span class='label'>
-												75<span class='smaller'>%</span>
-											</span>
-											<div class='pie'>
-												<div class='left-side half-circle'></div>
-												<div class='right-side half-circle'></div>
-											</div>
-											<div class='shadow'></div>
+										<div style={{ width: 100, height: 100 }}>
+											<CircularProgress percentage={75} color='#6643b3' />
 										</div>
 									</div>
 								);
@@ -123,20 +90,13 @@ const Dashboard = ({ username }) => {
 									<div class='widget-content'>
 										<div class='data'>
 											7956
-											<div class='percent-change text-secondary'>
+											<div class='percent-change'>
 												<i class='fas fa-long-arrow-alt-up'></i>
 												3.59%
 											</div>
 										</div>
-										<div class='pie-wrapper progress-75 style-2'>
-											<span class='label'>
-												75<span class='smaller'>%</span>
-											</span>
-											<div class='pie'>
-												<div class='left-side half-circle'></div>
-												<div class='right-side half-circle'></div>
-											</div>
-											<div class='shadow'></div>
+										<div style={{ width: 100, height: 100 }}>
+											<CircularProgress percentage={25} color='#ffffff' />
 										</div>
 									</div>
 								);
@@ -153,20 +113,13 @@ const Dashboard = ({ username }) => {
 									<div class='widget-content'>
 										<div class='data'>
 											7956
-											<div class='percent-change text-secondary'>
+											<div class='percent-change text-tertiary'>
 												<i class='fas fa-long-arrow-alt-down'></i>
 												3.59%
 											</div>
 										</div>
-										<div class='pie-wrapper progress-75 style-2'>
-											<span class='label'>
-												75<span class='smaller'>%</span>
-											</span>
-											<div class='pie'>
-												<div class='left-side half-circle'></div>
-												<div class='right-side half-circle'></div>
-											</div>
-											<div class='shadow'></div>
+										<div style={{ width: 100, height: 100 }}>
+											<CircularProgress percentage={60} color='#fe5260' />
 										</div>
 									</div>
 								);
@@ -210,7 +163,7 @@ const Dashboard = ({ username }) => {
 								return (
 									<div class='widget-content'>
 										<div
-											class='data'
+											class='data changeable'
 											style={{ width: 80 + '%', marginTop: 3 + 'rem' }}>
 											<dl>
 												<dd class='percentage percentage-15 color-primary'>
